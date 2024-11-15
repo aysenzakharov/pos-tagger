@@ -1,4 +1,4 @@
-FROM pos-tagger-base:latest
+FROM zeinell69/pos-tagger-base:latest
 
 WORKDIR /app
 
