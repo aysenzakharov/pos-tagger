@@ -11,7 +11,7 @@ app = FastAPI()
 class TextRequest(BaseModel):
     text: str
 
-@app.post("/v1/pos_tagging/")
+@app.post("/api/v1/pos_tagging/")
 async def pos_tagging(request: TextRequest):
     doc = nlp(request.text)
     pos_tags = [(token.text, token.pos_) for token in doc]
