@@ -7,7 +7,7 @@ from langdetector.langdetector import detect, downloadModel
 nlp = spacy.load("en_core_web_sm")
 
 print('loading models...')
-downloadModel()
+downloadModel(useLiteVersion=False)
 LANGUAGE_MODELS = {
     "en": nlp,
     "zh": spacy.load("zh_core_web_sm"),
