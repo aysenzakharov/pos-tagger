@@ -35,7 +35,7 @@ async def pos_tagging(request: TextRequest):
 @app.post("/api/v2/detect_language/")
 async def pos_tagging(request: TextRequest):
     return {
-        "languages": detect(request.text),
+        "detected_languages": detect(request.text),
     }
 
 @app.post("/api/v2/pos_tagging/")
