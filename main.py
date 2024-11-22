@@ -9,13 +9,13 @@ nlp = spacy.load("en_core_web_sm")
 print('loading models...')
 downloadModel()
 LANGUAGE_MODELS = {
-    "en": spacy.load("en_core_web_md"),
-    "zh": spacy.load("zh_core_web_md"),
-    "es": spacy.load("es_core_news_md"),
-    "de": spacy.load("de_core_news_md"),
-    "fr": spacy.load("fr_core_news_md"),
-    "ja": spacy.load("ja_core_news_md"),
-    "ru": spacy.load("ru_core_news_md"),
+    "en": nlp,
+    "zh": spacy.load("zh_core_web_sm"),
+    "es": spacy.load("es_core_news_sm"),
+    "de": spacy.load("de_core_news_sm"),
+    "fr": spacy.load("fr_core_news_sm"),
+    "ja": spacy.load("ja_core_news_sm"),
+    "ru": spacy.load("ru_core_news_sm"),
     "xx": spacy.load("xx_ent_wiki_sm"),
 }
 print('models are loaded')

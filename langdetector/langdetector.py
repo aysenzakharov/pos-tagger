@@ -3,8 +3,9 @@ import re
 import os
 import urllib.request
 
-def downloadModel():
-    model_url = "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin"
+def downloadModel(useLiteVersion=True):
+    file_ext = "bin" if not useLiteVersion else "ftz"
+    model_url = f"https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.{file_ext}"
     file_name = os.path.basename(model_url)
     script_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(script_dir, file_name)
