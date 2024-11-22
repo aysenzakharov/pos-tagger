@@ -4,12 +4,10 @@ from pydantic import BaseModel
 import spacy
 from langdetector.langdetector import detect, downloadModel
 
-nlp = spacy.load("en_core_web_sm")
-
 print('loading models...')
 downloadModel(useLiteVersion=False)
 LANGUAGE_MODELS = {
-    "en": nlp,
+    "en": spacy.load("en_core_web_sm"),
     "zh": spacy.load("zh_core_web_sm"),
     "es": spacy.load("es_core_news_sm"),
     "de": spacy.load("de_core_news_sm"),
@@ -28,7 +26,8 @@ class TextRequest(BaseModel):
 
 @app.post("/api/v1/pos_tagging/")
 async def pos_tagging(request: TextRequest):
-    doc = nlp(request.text)
+    model = LANGUAGE_MODELS.get('en')
+    doc = model(request.text)
     pos_tags = [(token.text, token.pos_) for token in doc]
     return {"pos_tags": pos_tags}
 
@@ -43,7 +42,7 @@ async def pos_tagging(request: TextRequest):
     detected_languages = detect(request.text)
     use_lang = detected_languages[0].get('lang') if not request.lang else request.lang
     model_lang = use_lang if use_lang in LANGUAGE_MODELS else 'xx'
-    model = LANGUAGE_MODELS.get(model_lang) 
+    model = LANGUAGE_MODELS.get(model_lang)
     doc = model(request.text)
     pos_tags = [(token.text, token.pos_) for token in doc]
     return {
