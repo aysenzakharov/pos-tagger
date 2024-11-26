@@ -7,13 +7,13 @@ from langdetector.langdetector import detect, downloadModel
 print('loading models...')
 downloadModel(useLiteVersion=False)
 LANGUAGE_MODELS = {
-    "en": spacy.load("en_core_web_sm"),
+    "en": spacy.load("en_core_web_lg"),
     "zh": spacy.load("zh_core_web_sm"),
     "es": spacy.load("es_core_news_sm"),
     "de": spacy.load("de_core_news_sm"),
     "fr": spacy.load("fr_core_news_sm"),
     "ja": spacy.load("ja_core_news_sm"),
-    "ru": spacy.load("ru_core_news_sm"),
+    "ru": spacy.load("ru_core_news_lg"),
     "xx": spacy.load("xx_ent_wiki_sm"),
 }
 print('models are loaded')
